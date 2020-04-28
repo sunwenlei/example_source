@@ -1,0 +1,41 @@
+<!-- Toolbar -->
+<mat-toolbar color="primary" class="header">
+  <mat-toolbar-row>
+    <button mat-icon-button>
+      <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+    </button>
+    <h1>Angular material example</h1>
+    <span class="menu-spacer"></span>
+    <!-- <div>
+      <a mat-button [routerLink]="'/accounts'"> Accounts </a>
+      <a mat-button [routerLink]="'/create-account'"> Create Account </a>
+      <a mat-button [routerLink]="'/contacts'"> Contacts </a>
+      <a mat-button [routerLink]="'/create-contact'"> Create Contact </a>
+      <a mat-button [routerLink]="'/activities'"> Activities </a>
+      <a mat-button [routerLink]="'/create-activity'"> Create Activity </a>
+
+    </div> -->
+  </mat-toolbar-row>
+</mat-toolbar>
+  
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav [(opened)]="opened" mode="side">
+      <mat-nav-list>
+  
+        <a mat-list-item [routerLink]="'/persons'"> Person list </a>
+        <a mat-list-item [routerLink]="'/create-account'"> Menu1 </a>
+        <a mat-list-item [routerLink]="'/contacts'"> Menu2 </a>
+        <a mat-list-item [routerLink]="'/create-contact'"> Menu3 </a>
+        <a mat-list-item [routerLink]="'/activities'"> Menu4 </a>
+        <a mat-list-item [routerLink]="'/create-activity'"> Menu5 </a>
+        <a mat-list-item (click)="sidenav.toggle()" mat-list-item>Hide sidebar</a>
+  
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div style="height: 92vh; padding:0px 20px;">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  

@@ -1,0 +1,19 @@
+/* mat-grid-tile {
+    background: lightblue;
+} */
+
+@media screen and (max-width: 768px) {
+    .grid-list{
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 769px){
+    .grid-list{
+        width: 60%;
+    }
+}
+
+.full-width {
+    width: 100%;
+}

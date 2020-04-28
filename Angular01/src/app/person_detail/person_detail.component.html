@@ -1,0 +1,124 @@
+<h3>Persons {{mode}}</h3>
+
+<div class="grid-list">
+  <mat-form-field class="full-width">
+    <mat-label>PersonCd</mat-label>
+    <input matInput type="text" name="PersonCd" [(ngModel)]="person.PersonCd" disabled placeholder="New code will be setted by system">
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>PersonName</mat-label>
+    <input matInput [(ngModel)]='person.PersonName' [formControl]="txtPersonName" >
+    <button mat-button *ngIf="person.PersonName && disableInput==false" matSuffix mat-icon-button aria-label="Clear" (click)="person.PersonName=''">
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-error *ngIf="txtPersonName.hasError('required')">
+      PersonName is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>PersonNameKana</mat-label>
+    <input matInput [(ngModel)]='person.PersonNameKana' [formControl]="txtPersonNameKana">
+    <button mat-button *ngIf="person.PersonNameKana && disableInput==false" matSuffix mat-icon-button aria-label="Clear" (click)="person.PersonNameKana=''">
+      <mat-icon>close</mat-icon> 
+    </button>
+    <mat-error *ngIf="txtPersonNameKana.hasError('required')">
+      PersonNameKana is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <table class="full-width" cellspacing="0">
+    <tr>
+      <td style="padding-right: 10px;">
+        <mat-form-field class="full-width">
+          <mat-label>Birthday</mat-label>
+          <input matInput name="Birthday" [matDatepicker]="picker" [(ngModel)]="person.Birthday" disabled='{{disableInput}}'>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="full-width">
+          <mat-label>Sex</mat-label>
+          <mat-select name="Sex" value="16px" [(ngModel)]="person.Sex" disabled='{{disableInput}}'>
+            <mat-option value="1">男性</mat-option>
+            <mat-option value="0">女性</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <table class="full-width" cellspacing="0">
+    <tr>
+      <td style="padding-right: 10px;">
+        <mat-form-field class="full-width">
+          <mat-label>Zip</mat-label>
+          <input matInput name="Zip" [(ngModel)]="person.Zip" maxlength="7" disabled='{{disableInput}}'>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="full-width">
+          <mat-label>Address1</mat-label>
+          <input matInput name="Address1" [(ngModel)]="person.Address1" disabled='{{disableInput}}'>
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding-right: 10px;">
+        <mat-form-field class="full-width">
+          <mat-label>Address2</mat-label>
+          <input matInput name="Address2" [(ngModel)]="person.Address2" disabled='{{disableInput}}'>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="full-width">
+          <mat-label>Address3</mat-label>
+          <input matInput name="Address3" [(ngModel)]="person.Address3" disabled='{{disableInput}}'>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="full-width">
+          <mat-label>Address4</mat-label>
+          <input matInput name="Address4" [(ngModel)]="person.Address4" disabled='{{disableInput}}'>
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding-right: 10px;">
+        <mat-form-field class="full-width">
+          <mat-label>Tel</mat-label>
+          <input matInput name="Tel" [(ngModel)]="person.Tel" disabled='{{disableInput}}'>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="full-width">
+          <mat-label>Mobile</mat-label>
+          <input matInput name="Mobile" [(ngModel)]="person.Mobile" disabled='{{disableInput}}'>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="full-width">
+          <mat-label>MailAddress</mat-label>
+          <input matInput name="MailAddress" [(ngModel)]="person.MailAddress" [formControl]="txtMailAddress">
+          <button mat-button *ngIf="person.MailAddress && disableInput==false" matSuffix mat-icon-button aria-label="Clear" (click)="person.MailAddress=''">
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-error *ngIf="txtMailAddress.hasError('email')">
+            MailAddress will be a <strong>email</strong> 
+          </mat-error>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+
+</div>
+
+<div>
+  <a mat-raised-button color="primary" (click)="Dosave()" *ngIf="mode!='Delete' && mode!='Refer'" >Save</a>
+  <a mat-raised-button color="primary" (click)="Dosave()" *ngIf="mode=='Delete'" >Delete</a>
+  <span *ngIf="mode!='Refer'" >&nbsp;&nbsp;&nbsp;</span> 
+  <a mat-raised-button [routerLink]="['/persons']" [queryParams]="{personcd: '',mode:'Create'}">Return</a>
+</div>

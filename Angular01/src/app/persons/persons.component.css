@@ -1,0 +1,26 @@
+table {
+  width: 100%;
+}
+
+table td{
+  min-width: 30px;
+  padding-right: 5px;
+}
+
+a{
+  cursor: pointer;
+  color: darkcyan;
+}
+
+a:hover{
+  color: blueviolet;
+}
+
+tbody tr {
+  position: relative;
+  cursor: pointer;
+}
+
+tr.mat-row:hover {
+  background: #f5f5f5;
+}
